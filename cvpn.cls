@@ -16,8 +16,9 @@
 % titlesec: http://tug.ctan.org/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
 \RequirePackage{hyperref,needspace,tabularx,xcolor,titlesec}
 
-\pagestyle{empty}
-\setlength\parindent{0pt}
+% General document settings
+\pagestyle{empty} % no pagination
+\setlength\parindent{0pt} % no paragraph indent
 % \color[HTML]{353535} % Default text color (dark grey)
 
 % \definecolor{link}{HTML}{506060} % Hyperlinks
@@ -30,31 +31,45 @@
 \usepackage[sfdefault]{noto}
 \usepackage[T1]{fontenc}
 
-% Format \section
+%% Format \section
+%% e.g. "Work Experience"
 \titleformat{\section}
     % {format}{sep}{before-code}
-    {\huge\bfseries\itshape\uppercase}{\thesection}{1em}{}
-\titlespacing*{\section}
-    % {left}{before}{after}
-    {0pt}{\baselineskip}{0pt}
+    {\huge\bfseries\itshape\uppercase}{\thesection}{0pt}{}
+\titlespacing*{\section}{0pt}{*0}{*0}
 
-% Every \item can be followed by one or more paragraphs
-% of description:
-%
-% |[
-% \item{date range}{company}{role}
-%
-% Description of what achieved during this application.
-% ]|
-\newenvironment{eventlist}{%
-    \newcommand*\inskip{}
-    \renewcommand\item[3]{%
-	\inskip%
-    {\vspace{0pt}\Large\uppercase{##1}\\}  % What
-	{> \textit{##2} -- {##3}\\}  % Where - When
-	\medskip
-	\renewcommand\inskip{\bigskip}}}
-    {\bigskip}
+%% Format \subsection
+%% e.g. "DevOps Engineer"
+\titleformat{\subsection}
+    {\Large\bfseries\uppercase}{\thesubsection}{0pt}{}
+\titlespacing*{\subsection}{0pt}{*0}{*0}
+
+%% Macro \wherewhen{'where'}{'when'}
+%% e.g. "> Mercatus (Toronto) – March ‘18 to Present"
+\newcommand{\wherewhen}[2]{
+    % Where - When
+    > {\textit{#1}} -- {{#2}\\}
+}
+
+%% Redefine \item for when (defined) \eventlist
+%% \item{Item Name}
+%%      {Item place}
+%%      {Item Time}
+%% {
+%% Item Description
+%% }
+%% eg.
+%% SITE RELIABILITY ENGINEER
+%% > Mercatus (Toronto) – March ‘18 to Present
+%% Blah
+\newenvironment{eventlist}{
+    \renewcommand\item[4]{
+        \subsection{##1} % What
+        \wherewhen{##2}{##3} % Where - When
+        {##4}
+	\bigskip
+    }
+}
 
 %
 % SITE RELIABILITY ENGINEER
