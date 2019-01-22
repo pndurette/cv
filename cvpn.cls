@@ -64,25 +64,28 @@
     \textcolor{cvmidgray}{> {\textit{#1}} -- {{#2}}}
 }
 
-%% Macro \cvheader[6]{}..
-%% e.g. Name, email, etc.
+%% Macro \cvheader
+%% Inserts the header. Everything is calculed to the pt.
+%% i.e Name + Email/City/Phone/Langs/Web
 \newcommand{\cvheader}[0]{
     \textcolor{cvmidgray}{
         \fontsize{36}{50}\selectfont\firaoldstyle\bfseries\uppercase
         {
-            \hspace*{120pt}Pierre Nicolas\\[10pt]
-            \hspace*{80pt}Durette
+            \hspace*{100pt}Pierre Nicolas\\[10pt]
+            \hspace*{60pt}Durette
         }
     }
 
+    \vspace{-27pt}{
     \textcolor{cvmidgray}{
         \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\uppercase
         {
-        pndurette@gmail.com -- Toronto\\
-        \hspace*{82pt}647-871-3274 -- English, French\\
-        \hspace*{52pt}pierre-nick.com
+        \hspace*{215pt}pndurette@gmail.com -- Toronto\\
+        \hspace*{297pt}647-871-3274 -- English, French\\
+        \hspace*{267pt}pierre-nick.com
         }
-    }
+    }}
+    \medskip
 }
 
 %% Redefine \item for when (defined) \eventlist
