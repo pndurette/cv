@@ -18,9 +18,6 @@
 \usepackage{multicol}
 \setlength{\columnsep}{1.25cm}
 
-% Misc Packages
-\RequirePackage{hyperref,needspace,tabularx,amsmath}
-
 % \color[HTML]{353535} % Default text color (dark grey)
 
 % \definecolor{link}{HTML}{506060} % Hyperlinks
@@ -39,6 +36,12 @@
 \definecolor{cvdarkgray}{HTML}{6C6E70}
 \definecolor{cvmidgray}{HTML}{454545}
 \definecolor{cvblue}{HTML}{008BD0}
+
+%% Misc Packages
+%% http://ctan.math.ca/tex-archive/macros/latex/contrib/progressbar/progressbar.pdf
+%% http://muug.ca/mirror/ctan/macros/latex/contrib/hyperref/doc/manual.pdf
+%% http://muug.ca/mirror/ctan/macros/latex/contrib/background/background.pdf
+\RequirePackage{progressbar,hyperref,background}
 
 %% Formatting
 %% http://tug.ctan.org/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
@@ -68,7 +71,7 @@
 %% Inserts the header. Everything is calculed to the pt.
 %% i.e Name + Email/City/Phone/Langs/Web
 \newcommand{\cvheader}[0]{
-    \textcolor{cvmidgray}{
+    \textcolor{cvdarkgray}{
         \fontsize{36}{50}\selectfont\firaoldstyle\bfseries\uppercase
         {
             \hspace*{100pt}Pierre Nicolas\\[10pt]
@@ -77,7 +80,7 @@
     }
 
     \vspace{-27pt}{
-    \textcolor{cvmidgray}{
+    \textcolor{cvdarkgray}{
         \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\uppercase
         {
         \hspace*{215pt}pndurette@gmail.com -- Toronto\\
@@ -107,6 +110,32 @@
 	\bigskip
     }
 }
+
+
+\newenvironment{skillslist}{
+    \newcommand{\skill}[2] {
+        \progressbar[
+            filledcolor=cvdarkgray,
+            heightr=1.3,
+            width=100pt,
+            roundnessa=0pt,
+            ]{##2}  {##1}\\[2pt]
+    }
+}
+
+\newcommand{\cvtag}[1]{
+    \backgroundsetup{
+        contents=#1,
+        color=black,
+        angle=90,
+        scale=0.8,
+        %position=current page.south east,
+        position=current page.east,
+        vshift=15pt%,
+        %hshift=100pt
+    }
+}
+
 
 %% Stuff breaks if file does't end with
 %% two line returns for some reason
