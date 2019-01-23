@@ -134,7 +134,7 @@
         angle=90,
         scale=0.8,
         position=current page.east,
-        vshift=15pt
+        vshift=30pt
     }
 }
 
