@@ -2,28 +2,21 @@
 \ProvidesClass{cvpn}
     [2019/01/17 v1.0 CV PN]
 
-% Derived from article class
+%% Derived from article class
 \LoadClass[10pt]{article}
 
-% General document settings
+%% General document settings
 \setcounter{secnumdepth}{-1} % don't number sections
 \pagestyle{empty} % no pagination
 \setlength\parindent{0pt} % no paragraph indent
 
-% Geometry (paper, margins, etc.)
-% https://www.overleaf.com/learn/latex/Page_size_and_margins
+%% Geometry (paper, margins, etc.)
+%% https://www.overleaf.com/learn/latex/Page_size_and_margins
 \RequirePackage[letterpaper,hmargin=1.25cm,vmargin=1.25cm]{geometry}
 
-% Column settings
-\usepackage{multicol}
+%% Column settings
+\RequirePackage{multicol}
 \setlength{\columnsep}{1.25cm}
-
-% \color[HTML]{353535} % Default text color (dark grey)
-
-% \definecolor{link}{HTML}{506060} % Hyperlinks
-% \hypersetup{colorlinks,breaklinks,urlcolor=link,linkcolor=link}
-% \setkomafont{disposition}{\color[HTML]{801010}}
-% \setkomafont{section}{\scshape\Large\mdseries}
 
 %% Fonts
 %% http://www.tug.dk/FontCatalogue/notosans/
@@ -37,11 +30,15 @@
 \definecolor{cvmidgray}{HTML}{454545}
 \definecolor{cvblue}{HTML}{008BD0}
 
+%% Links
+%% http://muug.ca/mirror/ctan/macros/latex/contrib/hyperref/doc/manual.pdf
+\RequirePackage{hyperref}
+\hypersetup{colorlinks,breaklinks,urlcolor=cvdarkgray,linkcolor=cvdarkgray}
+
 %% Misc Packages
 %% http://ctan.math.ca/tex-archive/macros/latex/contrib/progressbar/progressbar.pdf
-%% http://muug.ca/mirror/ctan/macros/latex/contrib/hyperref/doc/manual.pdf
 %% http://muug.ca/mirror/ctan/macros/latex/contrib/background/background.pdf
-\RequirePackage{progressbar,hyperref,background}
+\RequirePackage{progressbar,background}
 
 %% Formatting
 %% http://tug.ctan.org/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
@@ -83,9 +80,9 @@
     \textcolor{cvdarkgray}{
         \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\uppercase
         {
-        \hspace*{215pt}pndurette@gmail.com -- Toronto\\
-        \hspace*{297pt}647-871-3274 -- English, French\\
-        \hspace*{267pt}pierre-nick.com
+        \hspace*{215pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com} -- 647-871-3274\\
+        \hspace*{317pt}Toronto -- English, French\\
+        \hspace*{267pt}\href{http://pierre-nick.com}{pierre-nick.com}
         }
     }}
     \medskip
@@ -111,7 +108,11 @@
     }
 }
 
-
+%% Env \skillslist & macro \skill
+%% Displays a 'progress bar' of a skill
+%% \begin(skillslist)
+%%   \skill{<some tech>}{<percent between 0-1}
+%% \end(skillslist)
 \newenvironment{skillslist}{
     \newcommand{\skill}[2] {
         \progressbar[
@@ -119,20 +120,21 @@
             heightr=1.3,
             width=100pt,
             roundnessa=0pt,
-            ]{##2}  {##1}\\[2pt]
+            ticksheight=0pt
+            ]{##2} \enspace {##1}\\[2pt]
     }
 }
 
+%% macro \cvtag{some text}
+%% Displays a 'tag' in the middle-left margin
 \newcommand{\cvtag}[1]{
     \backgroundsetup{
         contents=#1,
         color=black,
         angle=90,
         scale=0.8,
-        %position=current page.south east,
         position=current page.east,
-        vshift=15pt%,
-        %hshift=100pt
+        vshift=15pt
     }
 }
 
