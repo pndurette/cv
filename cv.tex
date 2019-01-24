@@ -2,12 +2,18 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
-%%
+%% 
 
 \begin{document}
 
 \cvheader{}
-\cvtag{v20190122 (\textit{921103d}) \LaTeX}
+
+% Read 'git-rev.info' (which should contain the git rev)
+% And insert into the \cvtag. Fallback to 'unknown'.
+\IfFileExists{./git-rev.info}
+     {\def\gitrev{\input{git-rev.info}\unskip}}
+     {\def\gitrev{unknown}}
+\cvtag{\gitrev}
 
 \begin{multicols}{2}
 \section{Work experience}
@@ -98,7 +104,7 @@ QA, introduced Neuralitic's first CI workflow.
      {Ericsson (Montreal)}
      {‘07 (intern)}
 {
-Automated software builds (bash, make, ant)
+Automated software builds (bash, make, ant).
 }
 
 \end{eventlist}
@@ -110,14 +116,14 @@ Automated software builds (bash, make, ant)
      {École de technologie supérieure (ÉTS)}
      {'03 to '09}
 {
-(Montreal) Information Technology Engineering
+(Montreal) Information Technology Engineering.
 }
 
 \item{College Studies Diploma}
      {Collège de Bois-de-Boulogne}
      {'99 to '02}
 {
-(Montreal) Computer Science
+(Montreal) Computer Science.
 }
 
 \end{eventlist}

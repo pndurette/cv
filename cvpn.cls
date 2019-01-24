@@ -38,7 +38,8 @@
 %% Misc Packages
 %% http://ctan.math.ca/tex-archive/macros/latex/contrib/progressbar/progressbar.pdf
 %% http://muug.ca/mirror/ctan/macros/latex/contrib/background/background.pdf
-\RequirePackage{progressbar,background}
+%% http://ctan.forsale.plus/macros/latex/contrib/datetime2/datetime2.pdf
+\RequirePackage{progressbar,background,datetime2}
 
 %% Formatting
 %% http://tug.ctan.org/tex-archive/macros/latex/contrib/titlesec/titlesec.pdf
@@ -129,7 +130,7 @@
 %% Displays a 'tag' in the middle-left margin
 \newcommand{\cvtag}[1]{
     \backgroundsetup{
-        contents=#1,
+        contents={v\Today \, \textit{(#1)} \LaTeX},
         color=black,
         angle=90,
         scale=0.8,
