@@ -1,4 +1,5 @@
 git-rev.info
+.terraform/
 
 ## From https://github.com/github/gitignore/blob/master/TeX.gitignore
 .DS_Store
