@@ -17,6 +17,16 @@ My resumé in LaTeX.
 3. LaTeX Workshop uses the [`tianon/latex`](https://github.com/tianon/dockerfiles/blob/master/latex/Dockerfile) Docker image (~ 3GB) by default. Pull it first: `docker pull tianon/latex`
 4. Open an editor for `example.tex`, make a change and Save. The LaTeX will be compiled to `example.pdf`. Select "View LaTeX PDF file" on the top-right to have a live PDF view of changes saved.
 
+### Adding git revision
+
+The LaTeX file will read a file named `git-rev.info` if present and insert it into the document. Generate it with:
+
+```bash
+git rev-parse --short HEAD > git-rev.info
+```
+
+
+
 ## Hosting
 
 Hosting is on AWS S3.
