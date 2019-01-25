@@ -65,10 +65,10 @@
     \textcolor{cvmidgray}{> {\textit{#1}} -- {{#2}}}
 }
 
-%% Macro \cvheader
+%% Macro \cvheaderorig (the original)
 %% Inserts the header. Everything is calculed to the pt.
 %% i.e Name + Email/City/Phone/Langs/Web
-\newcommand{\cvheader}[0]{
+\newcommand{\cvheaderorig}[0]{
     \textcolor{cvdarkgray}{
         \fontsize{36}{50}\selectfont\firaoldstyle\bfseries\uppercase
         {
@@ -88,6 +88,31 @@
     }}
     \medskip
 }
+
+%% Macro \cvheader
+%% Inserts the header. Everything is calculed to the pt.
+%% i.e Name + Email/City/Phone/Langs/Web
+\newcommand{\cvheader}[0]{
+    \textcolor{cvdarkgray}{
+        \fontsize{36}{50}\selectfont\firaoldstyle\bfseries\uppercase
+        {
+            \hspace*{72pt}Pierre Nicolas\\[10pt]
+            \hspace*{80pt}Durette
+        }
+    }
+
+    \vspace{-29pt}{
+    \textcolor{cvdarkgray}{
+        \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\itshape
+        {
+        \hspace*{232pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com} -- 647-871-3274\\
+        \hspace*{235pt}Toronto -- English, French\\
+        \hspace*{235pt}\href{http://pierre-nick.com}{pierre-nick.com}
+        }
+    }}
+    \bigskip
+}
+
 
 %% Redefine \item for when (defined) \eventlist
 %% \item{Item Name}
