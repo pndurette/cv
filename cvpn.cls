@@ -55,7 +55,7 @@
 %% Format \subsection
 %% e.g. "DevOps Engineer"
 \titleformat{\subsection}
-    {\Large\bfseries\uppercase}{\thesubsection}{0pt}{}
+    {\raggedright\Large\bfseries\uppercase}{\thesubsection}{0pt}{}
 \titlespacing*{\subsection}{0pt}{*0}{*0}
 
 %% Macro \wherewhen{'where'}{'when'}
@@ -148,6 +148,15 @@
             roundnessa=0pt,
             ticksheight=0pt
             ]{##2} \enspace {##1}\\[2pt]
+    }
+}
+
+%% macro \eventlink
+%% Displays a properly formatted vertical '3-dots'
+%% to 'link' events together
+\newcommand{\eventlink}[0]{
+    \vspace{-11pt}\hspace*{10pt}{
+        \textcolor{cvdarkgray}{\Large\vdots}
     }
 }
 
