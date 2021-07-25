@@ -3,6 +3,10 @@ name: LaTeX Build
 on:
   pull_request:
     branches: [ main ]
+    # paths: [ 'latex/' ]
+  # push:
+  #   branches: [ main ]
+  #   paths: [ 'latex/' ]
 
   # Allows you to run this workflow manually
   workflow_dispatch:
@@ -32,3 +36,27 @@ jobs:
         with:
           name: pdf
           path: latex/cv.pdf
+
+  publish:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: pdf
+          path: latex/cv.pdf
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Upload CV to Google Cloud Storage
+        uses: google-github-actions/upload-cloud-storage@main
+        with:
+          path: latex/cv.pdf
+          destination: cv.pierre-nick.com
