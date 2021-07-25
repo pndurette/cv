@@ -1,0 +1,63 @@
+name: LaTeX Build
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths: [ 'latex/' ]
+  push:
+    branches: [ main ]
+    paths: [ 'latex/' ]
+
+  # Allows you to run this workflow manually
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+        # The LaTeX document expects 'git-rev.info' that it embeds
+        # in the document so it can traced back to a commit
+      - name: Generate LaTeX git-info
+        working-directory: latex
+        run: git rev-parse --short HEAD > git-rev.info
+
+      - name: Compile LaTeX document
+        uses: dante-ev/latex-action@latest
+        with:
+          working_directory: latex/
+          root_file: cv.tex
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf
+          path: latex/cv.pdf
+
+  publish:
+    if: github.event_name == 'push'
+    needs: [ build ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          # i.e. cv.pdf
+          name: pdf
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Upload CV to Google Cloud Storage
+        uses: google-github-actions/upload-cloud-storage@main
+        with:
+          path: cv.pdf
+          destination: cv.pierre-nick.com
