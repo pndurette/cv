@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
@@ -20,16 +21,8 @@ jobs:
           working_directory: latex/
           root_file: cv.tex
 
-      - uses: actions/upload-artifact@v2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
         with:
           name: pdf
           path: latex/cv.pdf
-
-      - uses: tonyhallett/artifacts-url-comments@main
-        env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-            prefix: Here are the artifacts 
-            suffix: Have a nice day.
-            format: name
-            addTo: pullandissues
