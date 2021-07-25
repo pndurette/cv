@@ -15,6 +15,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+        # The LaTeX document expects 'git-rev.info' that it embeds
+        # in the document so it can traced back to a commit
+      - name: Generate LaTeX git-info
+        working-directory: latex
+        run: git rev-parse --short HEAD > git-rev.info
+
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
         with:
