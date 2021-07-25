@@ -18,8 +18,8 @@ jobs:
       - name: Compile LaTeX document
         uses: dante-ev/latex-action@latest
         with:
-          root_file: latex/cv.tex
           working_directory: latex/
+          root_file: cv.tex
 
       - uses: actions/upload-artifact@v2
         with:
