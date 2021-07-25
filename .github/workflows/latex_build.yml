@@ -38,6 +38,7 @@ jobs:
           path: latex/cv.pdf
 
   publish:
+    if: github.event_name == 'push'
     needs: [ build ]
     runs-on: ubuntu-latest
 
@@ -47,6 +48,9 @@ jobs:
         with:
           name: pdf
           path: latex/cv.pdf
+      
+      - name: Display structure of downloaded files
+        run: ls -R
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@master
