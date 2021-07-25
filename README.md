@@ -37,7 +37,7 @@ A PR will trigger a `plan` on Terraform Cloud, with auto-`apply` on PR merge.
 
 * Domain (`cv.pierre-nick.com`) must be [validated by Google](https://search.google.com/search-console):
   * `TXT` `cv` set to ` google-site-verification=...` (from above)
-  * `CNAME` `cv` set to `c.storage.googleapis.com`
+* Domain must have a `CNAME` `cv` set to `c.storage.googleapis.com`
 
 ## `latex/`
 
