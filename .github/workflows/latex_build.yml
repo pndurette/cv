@@ -59,4 +59,4 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@main
         with:
           path: latex/cv.pdf
-          destination: cv.pierre-nick.com
+          destination: cv.pierre-nick.com/cv.pdf
