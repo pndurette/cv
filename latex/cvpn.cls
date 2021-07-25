@@ -81,7 +81,7 @@
     \textcolor{cvdarkgray}{
         \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\uppercase
         {
-        \hspace*{215pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com} -- 647-871-3274\\
+        \hspace*{215pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com}\\
         \hspace*{317pt}Toronto -- English, French\\
         \hspace*{267pt}\href{http://pierre-nick.com}{pierre-nick.com}
         }
@@ -105,7 +105,7 @@
     \textcolor{cvdarkgray}{
         \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\itshape
         {
-        \hspace*{232pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com} -- 647-871-3274\\
+        \hspace*{232pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com}\\
         \hspace*{235pt}Toronto -- English, French\\
         \hspace*{235pt}\href{http://pierre-nick.com}{pierre-nick.com}
         }
