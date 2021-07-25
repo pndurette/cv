@@ -46,8 +46,8 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v2
         with:
+          # cv.pdf
           name: pdf
-          path: latex/cv.pdf
       
       - name: Display structure of downloaded files
         run: ls -R
@@ -62,5 +62,5 @@ jobs:
       - name: Upload CV to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@main
         with:
-          path: latex/cv.pdf
-          destination: cv.pierre-nick.com/cv.pdf
+          path: cv.pdf
+          destination: cv.pierre-nick.com
