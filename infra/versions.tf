@@ -5,6 +5,14 @@ terraform {
       version = "3.76.0"
     }
   }
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "pierrenick"
+
+    workspaces {
+      name = "cv"
+    }
+  }
 }
 
 provider "google" {
