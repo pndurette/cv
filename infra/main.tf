@@ -7,7 +7,7 @@
 resource "google_storage_bucket" "cv_site" {
   name          = var.cv_domain
   location      = var.region
-  force_destroy = true
+  force_destroy = false
 
   uniform_bucket_level_access = true
 
