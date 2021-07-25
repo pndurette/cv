@@ -1,0 +1,27 @@
+name: LaTeX Build
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+
+  # Allows you to run this workflow manually
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Compile LaTeX document
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: latex/cv.tex
+          working_directory: latex/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pdf
+          path: latex/cv.pdf
