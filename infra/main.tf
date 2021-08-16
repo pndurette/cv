@@ -3,6 +3,8 @@
 # * DNS must be validated with https://search.google.com/search-console
 # * TXT record <name>, contents 'google-site-verification=...' (from above)
 # * CNAME record <name>, contents 'c.storage.googleapis.com'
+# * Service Account email running this must be a domain owner
+#  (https://cloud.google.com/storage/docs/domain-name-verification#additional_verified_owners)
 
 resource "google_storage_bucket" "cv_site" {
   name          = var.cv_domain
