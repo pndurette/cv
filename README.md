@@ -25,22 +25,8 @@ The LaTeX file will read a file named `git-rev.info` if present and insert it in
 git rev-parse --short HEAD > git-rev.info
 ```
 
-
-
-## `infra/`
-
-Hosting is on a Google Cloud Storage (mananged by Terraform Cloud), fronted by Cloudflare.
-
-A PR will trigger a `plan` on Terraform Cloud, with auto-`apply` on PR merge.
-
-#### Prerequisites
-
-* Domain (`cv.pierre-nick.com`) must be [validated by Google](https://search.google.com/search-console):
-  * `TXT` `cv` set to ` google-site-verification=...` (from above)
-* Domain must have a `CNAME` `cv` set to `c.storage.googleapis.com`
-
 ## `latex/`
 
-Handled by GitHub Actions, including Cloudflare cache purging.
+Handled by GitHub Actions.
 
-A PR will trigger a LaTeX build.  Verify the Artifact and merge PR to push to Google Cloud.
+A PR will trigger a LaTeX build.  Verify the Artifact and merge PR to publish to GitHub Pages
