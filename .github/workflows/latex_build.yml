@@ -37,10 +37,17 @@ jobs:
           working_directory: latex/
           root_file: cv.tex
 
-      - name: Upload Artifact
+        # Artifact for 'previewing'
+      - name: Upload Artifact (Preview)
         uses: actions/upload-artifact@v2
         with:
           name: pdf
+          path: latex/cv.pdf
+
+        # Artifact for GitHub Pages
+      - name: Upload Artifact (GitHub Pages)
+        uses: actions/upload-pages-artifact@v1
+        with:
           path: latex/cv.pdf
 
   publish:
