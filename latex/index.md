@@ -1,3 +1,4 @@
 ---
-permalink: /cv.pdf
+layout: forward
+target: cv.pdf
 ---
