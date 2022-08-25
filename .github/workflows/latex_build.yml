@@ -44,7 +44,7 @@ jobs:
           path: latex/cv.pdf
 
   publish:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' || 'workflow_dispatch'
     needs: [ build ]
     runs-on: ubuntu-latest
 
