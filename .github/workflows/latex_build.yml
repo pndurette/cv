@@ -52,7 +52,7 @@ jobs:
           path: latex/
 
   publish:
-    if: github.event_name == 'push' || 'workflow_dispatch'
+    if: github.event_name == 'push'
     needs: [ build ]
     runs-on: ubuntu-latest
 
