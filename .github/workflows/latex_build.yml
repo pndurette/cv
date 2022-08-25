@@ -48,7 +48,8 @@ jobs:
       - name: Upload Artifact (GitHub Pages)
         uses: actions/upload-pages-artifact@v1
         with:
-          path: latex/cv.pdf
+          # Expects a directory
+          path: latex/
 
   publish:
     if: github.event_name == 'push' || 'workflow_dispatch'
