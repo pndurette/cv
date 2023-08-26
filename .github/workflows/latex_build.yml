@@ -3,10 +3,10 @@ name: LaTeX Build
 on:
   pull_request:
     branches: [ main ]
-    paths: [ 'latex/**' ]
+    paths: [ 'latex/**', 'www/**' ]
   push:
     branches: [ main ]
-    paths: [ 'latex/**' ]
+    paths: [ 'latex/**', 'www/**' ]
 
   # Allows you to run this workflow manually
   workflow_dispatch:
