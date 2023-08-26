@@ -24,6 +24,10 @@
 \usepackage{FiraSans} % header
 \usepackage[T1]{fontenc}
 
+%% Add accents support
+%% https://tex.stackexchange.com/questions/57743/accents-in-latex
+\RequirePackage[utf8]{inputenc}
+
 %% Colours
 \RequirePackage[dvipsnames]{xcolor}
 \definecolor{cvdarkgray}{HTML}{6C6E70}
@@ -106,7 +110,7 @@
         \fontsize{14}{30}\selectfont\firaoldstyle\bfseries\itshape
         {
         \hspace*{232pt}\href{mailto:pndurette@gmail.com}{pndurette@gmail.com}\\
-        \hspace*{235pt}Toronto -- English, French\\
+        \hspace*{235pt}Montréal -- English, French\\
         \hspace*{235pt}\href{http://pierre-nick.com}{pierre-nick.com}
         }
     }}

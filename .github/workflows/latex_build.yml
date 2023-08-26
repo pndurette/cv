@@ -3,10 +3,10 @@ name: LaTeX Build
 on:
   pull_request:
     branches: [ main ]
-    paths: [ 'latex/**' ]
+    paths: [ 'latex/**', 'www/**' ]
   push:
     branches: [ main ]
-    paths: [ 'latex/**' ]
+    paths: [ 'latex/**', 'www/**' ]
 
   # Allows you to run this workflow manually
   workflow_dispatch:
@@ -44,12 +44,16 @@ jobs:
           name: pdf
           path: latex/cv.pdf
 
+        # Move PDF to www (web root)
+      - name: Move PDF to www
+        run: mv latex/cv.pdf www/cv.pdf 
+
         # Artifact for GitHub Pages
       - name: Upload Artifact (GitHub Pages)
         uses: actions/upload-pages-artifact@v1
         with:
           # Expects a directory
-          path: latex/
+          path: www/
 
   publish:
     if: github.event_name == 'push'
